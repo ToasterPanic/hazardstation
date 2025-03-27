@@ -3492,7 +3492,6 @@
 "aUG" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/spawner/random/structure/table_or_rack,
-/obj/item/reagent_containers/pill/maintenance,
 /turf/open/floor/pod/light,
 /area/station/maintenance/floor1/port/aft)
 "aUH" = (
@@ -15189,36 +15188,6 @@
 /area/station/security/evidence)
 "dSv" = (
 /obj/structure/table/reinforced/plastitaniumglass,
-/obj/item/reagent_containers/pill/happinesspsych{
-	desc = "A mysterious unlabelled pill. You're not sure what it is, but it's probably a synthetic drug.";
-	list_reagents = list(/datum/reagent/drug/happiness = 5, /datum/reagent/drug/space_drugs = 10, /datum/reagent/drug/mushroomhallucinogen = 10);
-	name = "strange pill";
-	pixel_x = 9
-	},
-/obj/item/reagent_containers/pill/happinesspsych{
-	desc = "A mysterious unlabelled pill. You're not sure what it is, but it's probably a synthetic drug.";
-	list_reagents = list(/datum/reagent/drug/happiness = 5, /datum/reagent/drug/space_drugs = 10, /datum/reagent/drug/mushroomhallucinogen = 10);
-	name = "strange pill"
-	},
-/obj/item/reagent_containers/pill/happinesspsych{
-	desc = "A mysterious unlabelled pill. You're not sure what it is, but it's probably a synthetic drug.";
-	list_reagents = list(/datum/reagent/drug/happiness = 5, /datum/reagent/drug/space_drugs = 10, /datum/reagent/drug/mushroomhallucinogen = 10);
-	name = "strange pill";
-	pixel_x = -9;
-	pixel_y = -8
-	},
-/obj/item/reagent_containers/pill/happinesspsych{
-	desc = "A mysterious unlabelled pill. You're not sure what it is, but it's probably a synthetic drug.";
-	list_reagents = list(/datum/reagent/drug/happiness = 5, /datum/reagent/drug/space_drugs = 10, /datum/reagent/drug/mushroomhallucinogen = 10);
-	name = "strange pill";
-	pixel_y = -8
-	},
-/obj/item/reagent_containers/pill/happinesspsych{
-	desc = "A mysterious unlabelled pill. You're not sure what it is, but it's probably a synthetic drug.";
-	list_reagents = list(/datum/reagent/drug/happiness = 5, /datum/reagent/drug/space_drugs = 10, /datum/reagent/drug/mushroomhallucinogen = 10);
-	name = "strange pill";
-	pixel_x = -9
-	},
 /turf/open/floor/carpet/neon/simple/pink/nodots,
 /area/station/maintenance/floor2/port/fore)
 "dSw" = (
@@ -32450,10 +32419,6 @@
 /area/station/science/lobby)
 "ivE" = (
 /obj/structure/table/reinforced/rglass,
-/obj/item/reagent_containers/pill/morphine{
-	desc = "What could it be?";
-	name = "blue pill"
-	},
 /turf/open/floor/carpet/blue,
 /area/station/maintenance/floor3/port/aft)
 "ivL" = (
@@ -40175,10 +40140,6 @@
 "kuA" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/table/reinforced/plasmarglass,
-/obj/item/reagent_containers/pill/cyanide{
-	desc = "What could it be?";
-	name = "red pill"
-	},
 /turf/open/floor/carpet/red,
 /area/station/maintenance/floor3/port/aft)
 "kuB" = (
@@ -59896,10 +59857,6 @@
 "pvm" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/table/reinforced/rglass,
-/obj/item/reagent_containers/pill/iron{
-	desc = "What could it be?";
-	name = "blue pill"
-	},
 /turf/open/floor/carpet/blue,
 /area/station/maintenance/floor3/port/aft)
 "pvs" = (
@@ -60546,10 +60503,6 @@
 /area/station/medical/virology)
 "pDd" = (
 /obj/structure/table/reinforced/plasmarglass,
-/obj/item/reagent_containers/pill/epinephrine{
-	desc = "What could it be?";
-	name = "red pill"
-	},
 /turf/open/floor/carpet/red,
 /area/station/maintenance/floor3/port/aft)
 "pDq" = (
@@ -67600,7 +67553,6 @@
 /area/station/service/hydroponics/garden/abandoned)
 "rsd" = (
 /obj/structure/table,
-/obj/item/reagent_containers/pill/maintenance,
 /turf/open/floor/pod/light,
 /area/station/maintenance/floor1/port)
 "rsf" = (
@@ -67942,7 +67894,6 @@
 /turf/open/floor/plating,
 /area/station/maintenance/floor1/starboard/fore)
 "rxZ" = (
-/obj/item/storage/toolbox/maint_kit,
 /obj/effect/spawner/random/junk_shell,
 /turf/open/floor/pod/light,
 /area/station/maintenance/floor4/port)
@@ -94151,7 +94102,6 @@
 /area/station/maintenance/floor1/port)
 "ykr" = (
 /obj/effect/spawner/random/structure/table_or_rack,
-/obj/item/reagent_containers/pill/maintenance,
 /turf/open/floor/iron/white,
 /area/station/medical/abandoned)
 "ykt" = (

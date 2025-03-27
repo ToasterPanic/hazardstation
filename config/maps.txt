@@ -57,6 +57,11 @@ map northstar
 	minplayers 50
 endmap
 
+# Gammastation
+map gammastation
+	maxplayers 66
+endmap
+
 # Debug-only maps.
 
 map gateway_test

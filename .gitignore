@@ -24,6 +24,7 @@
 /v20/**/*
 /v21/**/*
 /v22/**/*
+NovaSector/
 
 # Ignore compiled linux libs in the root folder, e.g. librust_g.so
 # DO NOT IT MAKES SERVER WORKY!

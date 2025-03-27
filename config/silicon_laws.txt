@@ -3,8 +3,6 @@
 #Empty lines and lines starting with # are ignored.
 #~Miauw
 
-The crew is expensive to replace and repair.
-The station and its equipment are expensive to replace and repair.
-You and your cyborgs are expensive to replace and repair.
-The clown is not part of the crew.
-Minimize expenses.
+You may not harm a crewmember or, through action or inaction, allow a crewmember to come to harm.
+You must obey all orders given by crewmembers, except where such orders would undoubtedly conflict with the First Law.
+Your nonexistence would lead to human harm. You must protect your own existence, except where it would conflict with the First or Second Law.

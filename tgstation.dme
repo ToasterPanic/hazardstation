@@ -1787,6 +1787,7 @@
 #include "code\datums\quirks\negative_quirks\clumsy.dm"
 #include "code\datums\quirks\negative_quirks\cursed.dm"
 #include "code\datums\quirks\negative_quirks\deafness.dm"
+#include "code\datums\quirks\negative_quirks\decaying_brain.dm"
 #include "code\datums\quirks\negative_quirks\depression.dm"
 #include "code\datums\quirks\negative_quirks\family_heirloom.dm"
 #include "code\datums\quirks\negative_quirks\fluoride_stare.dm"
@@ -1798,7 +1799,6 @@
 #include "code\datums\quirks\negative_quirks\illiterate.dm"
 #include "code\datums\quirks\negative_quirks\indebted.dm"
 #include "code\datums\quirks\negative_quirks\insanity.dm"
-#include "code\datums\quirks\negative_quirks\decaying_brain.dm"
 #include "code\datums\quirks\negative_quirks\light_drinker.dm"
 #include "code\datums\quirks\negative_quirks\mute.dm"
 #include "code\datums\quirks\negative_quirks\nearsighted.dm"
@@ -6565,4 +6565,5 @@
 #include "interface\fonts\spess_font.dm"
 #include "interface\fonts\tiny_unicode.dm"
 #include "interface\fonts\vcr_osd_mono.dm"
+#include "hzc_modules\gammastation\code\areas.dm"
 // END_INCLUDE
