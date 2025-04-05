@@ -20,13 +20,16 @@
 #define MAPTEXT_PIXELLARI(text) {"<span style='font-family: \"Pixellari\"; font-size: 12pt; -dm-text-outline: 1px black'>[##text]</span>"}
 
 /// Standard size (ie: normal runechat) - Size options: 6pt 12pt 18pt.
-#define MAPTEXT_GRAND9K(text) {"<span style='font-family: \"Grand9K Pixel\"; font-size: 6pt; -dm-text-outline: 1px black'>[##text]</span>"}
+#define MAPTEXT_GRAND9K(text) {"<span style='font-family: \"Geo\"; font-size: 6pt; -dm-text-outline: 1px black'>[##text]</span>"}
 
 /// Small size. (ie: context subtooltips, spell delays) - Size options: 12pt 24pt.
 #define MAPTEXT_TINY_UNICODE(text) {"<span style='font-family: \"TinyUnicode\"; font-size: 12pt; line-height: 0.75; -dm-text-outline: 1px black'>[##text]</span>"}
 
 /// Smallest size. (ie: whisper runechat) - Size options: 6pt 12pt 18pt.
 #define MAPTEXT_SPESSFONT(text) {"<span style='font-family: \"Spess Font\"; font-size: 6pt; line-height: 1.4; -dm-text-outline: 1px black'>[##text]</span>"}
+
+/// Test Font - Size options: 6pt 12pt 18pt.
+#define MAPTEXT_GEO(text) {"<span style='font-family: \"Geo\"; font-size: 12pt; -dm-text-outline: 1px black'>[##text]</span>"}
 
 /**
  * Prepares a text to be used for maptext, using a variable size font.

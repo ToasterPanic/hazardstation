@@ -24,6 +24,7 @@
 /v20/**/*
 /v21/**/*
 /v22/**/*
+*.ogg
 NovaSector/
 
 # Ignore compiled linux libs in the root folder, e.g. librust_g.so
@@ -36,7 +37,7 @@ NovaSector/
 *.dmb
 *.rsc
 *.m.dme
-*.test.dme
+*.test.dmev
 *.lk
 *.int
 *.backup
