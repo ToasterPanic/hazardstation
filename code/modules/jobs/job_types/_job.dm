@@ -533,6 +533,10 @@
 
 	// If the job in question is a head of staff,
 	// check the config to see if we should force the player onto a human character or not
+
+	// (NO THE FUCK WE DON'T, let them moths [and lizards i guess] get command jobs!)
+
+	/*
 	if(job.job_flags & JOB_HEAD_OF_STAFF)
 		switch(human_authority_setting)
 
@@ -550,6 +554,7 @@
 			// always return true, since there is no chance that a non-human can be a head of staff.
 			if(HUMAN_AUTHORITY_ENFORCED)
 				require_human = TRUE
+	*/
 
 	src.job = job.title
 
