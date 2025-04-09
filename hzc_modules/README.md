@@ -24,7 +24,9 @@ Otherwise, pick a new ID for your module. E.g. `dna_feature_wings` or `sex_updat
 
 And then you'll want to establish your core folder that you'll be working out of which is normally your module ID. E.g. `/hzc_modules/modules/shuttle_toggle`
 
-All assets should be formatted in folders similarly to how it is in /tg/. For example, let's say I wanted to add a new door type. Since other door types put their code in the `/code/game/machinery/doors` folder, I should put it in the `/hzc_modules/my_beautiful_module/code/game/machinery/doors/my_sick_ass_door_type.dm`. Do the same for all other assets - icons, sounds, etc.
+In that core folder, you should have a README.md documenting the purpose of your module. It doesn't need to be long, just needs to be enough to explain how everything works.
+
+All assets should be formatted in folders similarly to how it is in /tg/code. For example, let's say you wanted to add a new door type in a module. Since the code for different door types in /tg/code are in the `/code/game/machinery/doors` folder, I should put it in the `/hzc_modules/my_beautiful_module/code/game/machinery/doors/my_sick_ass_door_type.dm`. Do the same for all other assets - icons, sounds, etc.
 
 ### Defines
 
