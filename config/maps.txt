@@ -15,12 +15,7 @@ endmap
 
 # Production-level maps.
 
-map birdshot
-	#default
-	maxplayers 66
-	votable
-endmap
-
+# Good map
 map deltastation
 	minplayers 50
 	votable
@@ -31,35 +26,36 @@ map icebox
 	votable
 endmap
 
+# It's fucking metastation
 map metastation
 	minplayers 25
 	#voteweight 0.5
 	votable
 endmap
 
+# Okay map, has its problems
 map tramstation
 	minplayers 35
 	votable
 endmap
 
+# Cool idea
 map nebulastation
 	minplayers 35
 	votable
 endmap
 
-map wawastation
-	votable
-	minplayers 40
-endmap
-
 # Northstar is back baybee! (just for fun)
+# Northstar has a lot of problems but I still love it <3<3<3
 map northstar
 	minplayers 50
+	votable
 endmap
 
 # Gammastation
 map gammastation
 	maxplayers 66
+	votable
 endmap
 
 # Debug-only maps.
