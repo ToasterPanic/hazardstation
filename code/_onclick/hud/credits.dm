@@ -34,10 +34,11 @@
 /atom/movable/screen/credit
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	alpha = 0
-	screen_loc = "12,1"
 	plane = SPLASHSCREEN_PLANE
-	var/client/parent
+	screen_loc = "CENTER-6:16,BOTTOM"
+
 	var/matrix/target
+	var/client/parent
 
 /atom/movable/screen/credit/Initialize(mapload, datum/hud/hud_owner, credited, client/P, icon/I)
 	. = ..()

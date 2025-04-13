@@ -15,6 +15,7 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 	var/num_survivors = 0 //Count of non-brain non-eye mobs with mind that are alive
 	var/num_escapees = 0 //Above and on centcom z
 	var/num_shuttle_escapees = 0 //Above and on escape shuttle
+	var/list/list_of_human_escapees = list() //References to all escaped humans
 	var/list/area/shuttle_areas
 	if(SSshuttle?.emergency)
 		shuttle_areas = SSshuttle.emergency.shuttle_areas
@@ -39,6 +40,8 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 					escape_status = "escapees"
 					if(shuttle_areas[get_area(M)])
 						num_shuttle_escapees++
+						if(ishuman(M))
+							list_of_human_escapees += M
 			if(isliving(M))
 				var/mob/living/L = M
 				mob_data["location"] = get_area(L)
@@ -104,6 +107,7 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 	.[POPCOUNT_ESCAPEES] = num_escapees
 	.[POPCOUNT_SHUTTLE_ESCAPEES] = num_shuttle_escapees
 	.["station_integrity"] = station_integrity
+	.["human_escapees_list"] = list_of_human_escapees
 
 /datum/controller/subsystem/ticker/proc/gather_antag_data()
 	var/team_gid = 1
@@ -229,6 +233,8 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 		if(speed_round && was_forced != ADMIN_FORCE_END_ROUND)
 			C?.give_award(/datum/award/achievement/misc/speed_round, C?.mob)
 		HandleRandomHardcoreScore(C)
+
+	RollCredits()
 
 	var/popcount = gather_roundend_feedback()
 	display_report(popcount)
