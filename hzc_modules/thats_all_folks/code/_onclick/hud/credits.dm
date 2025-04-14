@@ -64,8 +64,8 @@
 			sleep(2 SECONDS)
 
 	for(var/mob/living/silicon/S in GLOB.silicon_mobs)
-		if (M.mind)
-			send_credits_to_all("[M.name] (played by [M.mind.key])")
+		if (S.mind)
+			send_credits_to_all("[S.name] (played by [S.mind.key])")
 			sleep(2 SECONDS)
 
 	sleep(3 SECONDS)
