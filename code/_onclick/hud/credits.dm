@@ -5,6 +5,7 @@
 #define CREDITS_PATH "[global.config.directory]/contributors.dmi"
 
 /client/proc/RollCredits()
+	/* BEGIN HZC EDIT...
 	set waitfor = FALSE
 	if(!fexists(CREDITS_PATH))
 		return
@@ -23,6 +24,7 @@
 	sleep(CREDIT_ROLL_SPEED - CREDIT_SPAWN_SPEED)
 	remove_verb(src, /client/proc/ClearCredits)
 	qdel(credits_icon)
+	END HZC EDIT! */
 
 /client/proc/ClearCredits()
 	set name = "Hide Credits"

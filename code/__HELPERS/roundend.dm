@@ -234,10 +234,10 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 			C?.give_award(/datum/award/achievement/misc/speed_round, C?.mob)
 		HandleRandomHardcoreScore(C)
 
-	RollCredits()
-
 	var/popcount = gather_roundend_feedback()
 	display_report(popcount)
+
+	play_hz_credits_end()
 
 	CHECK_TICK
 
