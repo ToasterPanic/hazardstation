@@ -286,6 +286,9 @@ SUBSYSTEM_DEF(id_access)
 	desc_by_access["[ACCESS_HYDROPONICS]"] = "Hydroponics"
 	desc_by_access["[ACCESS_LIBRARY]"] = "Library"
 	desc_by_access["[ACCESS_LAWYER]"] = "Law Office"
+	// BEGIN HZSTATION EDIT...
+	desc_by_access["[ACCESS_NEBULAMART]"] = "Nebulamart Backrooms"
+	// END HZSTATION EDIT!
 	desc_by_access["[ACCESS_ROBOTICS]"] = "Robotics"
 	desc_by_access["[ACCESS_VIROLOGY]"] = "Virology"
 	desc_by_access["[ACCESS_PSYCHOLOGY]"] = "Psychology"

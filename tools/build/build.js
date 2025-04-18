@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+
 /**
  * Build script for /tg/station 13 codebase.
  *
@@ -8,15 +9,25 @@
 
 import fs from 'fs';
 import https from 'https';
-import { env } from 'process';
+import {
+  env
+} from 'process';
 import Juke from './juke/index.js';
-import { DreamDaemon, DreamMaker, NamedVersionFile } from './lib/byond.js';
-import { yarn } from './lib/yarn.js';
+import {
+  DreamDaemon,
+  DreamMaker,
+  NamedVersionFile
+} from './lib/byond.js';
+import {
+  yarn
+} from './lib/yarn.js';
 
 const TGS_MODE = process.env.CBT_BUILD_MODE === 'TGS';
 
 Juke.chdir('../..', import.meta.url);
-Juke.setup({ file: import.meta.url }).then((code) => {
+Juke.setup({
+  file: import.meta.url
+}).then((code) => {
   // We're using the currently available quirk in Juke Build, which
   // prevents it from exiting on Windows, to wait on errors.
   if (code !== 0 && process.argv.includes('--wait-on-error')) {
@@ -28,8 +39,7 @@ Juke.setup({ file: import.meta.url }).then((code) => {
     // workaround for ESBuild process lingering
     // Once https://github.com/privatenumber/esbuild-loader/pull/354 is merged and updated to, this can be removed
     setTimeout(() => process.exit(code), 10000);
-  }
-  else {
+  } else {
     process.exit(code);
   }
 });
@@ -72,7 +82,9 @@ export const DmVersionParameter = new Juke.Parameter({
   type: 'string',
 });
 
-export const CiParameter = new Juke.Parameter({ type: 'boolean' });
+export const CiParameter = new Juke.Parameter({
+  type: 'boolean'
+});
 
 export const ForceRecutParameter = new Juke.Parameter({
   type: 'boolean',
@@ -105,7 +117,7 @@ export const CutterTarget = new Juke.Target({
     const suffix = process.platform === 'win32' ? '.exe' : '';
     const download_from = `https://github.com/${repo}/releases/download/${ver}/hypnagogic${suffix}`
     await download_file(download_from, cutter_path);
-    if(process.platform !== 'win32') {
+    if (process.platform !== 'win32') {
       await Juke.exec("chmod", [
         '+x',
         cutter_path,
@@ -117,7 +129,7 @@ export const CutterTarget = new Juke.Target({
 async function download_file(url, file) {
   return new Promise((resolve, reject) => {
     let file_stream = fs.createWriteStream(file);
-    https.get(url, function(response) {
+    https.get(url, function (response) {
       if (response.statusCode === 302) {
         file_stream.close();
         download_file(response.headers.location, file)
@@ -152,7 +164,9 @@ export const IconCutterTarget = new Juke.Target({
   dependsOn: () => [
     CutterTarget,
   ],
-  inputs: ({ get }) => {
+  inputs: ({
+    get
+  }) => {
     const standard_inputs = [
       `icons/**/*.png.toml`,
       `icons/**/*.dmi.toml`,
@@ -170,8 +184,10 @@ export const IconCutterTarget = new Juke.Target({
       ...existing_configs.map((file) => file.replace('.toml', '')),
     ]
   },
-  outputs: ({ get }) => {
-    if(get(ForceRecutParameter))
+  outputs: ({
+    get
+  }) => {
+    if (get(ForceRecutParameter))
       return [];
     const folders = [
       ...Juke.glob(`icons/**/*.png.toml`),
@@ -210,7 +226,9 @@ export const DmMapsIncludeTarget = new Juke.Target({
 
 export const DmTarget = new Juke.Target({
   parameters: [DefineParameter, DmVersionParameter, WarningParameter, NoWarningParameter, SkipIconCutter],
-  dependsOn: ({ get }) => [
+  dependsOn: ({
+    get
+  }) => [
     get(DefineParameter).includes('ALL_MAPS') && DmMapsIncludeTarget,
     !get(SkipIconCutter) && IconCutterTarget,
   ],
@@ -218,6 +236,7 @@ export const DmTarget = new Juke.Target({
     '_maps/map_files/generic/**',
     'maps/**/*.dm',
     'code/**',
+    'hzc_modules/**',
     'html/**',
     'icons/**',
     'interface/**',
@@ -226,7 +245,9 @@ export const DmTarget = new Juke.Target({
     `${DME_NAME}.dme`,
     NamedVersionFile,
   ],
-  outputs: ({ get }) => {
+  outputs: ({
+    get
+  }) => {
     if (get(DmVersionParameter)) {
       return []; // Always rebuild when dm version is provided
     }
@@ -235,7 +256,9 @@ export const DmTarget = new Juke.Target({
       `${DME_NAME}.rsc`,
     ]
   },
-  executes: async ({ get }) => {
+  executes: async ({
+    get
+  }) => {
     await DreamMaker(`${DME_NAME}.dme`, {
       defines: ['CBT', ...get(DefineParameter)],
       warningsAsErrors: get(WarningParameter).includes('error'),
@@ -247,11 +270,15 @@ export const DmTarget = new Juke.Target({
 
 export const DmTestTarget = new Juke.Target({
   parameters: [DefineParameter, DmVersionParameter, WarningParameter, NoWarningParameter],
-  dependsOn: ({ get }) => [
+  dependsOn: ({
+    get
+  }) => [
     get(DefineParameter).includes('ALL_MAPS') && DmMapsIncludeTarget,
     IconCutterTarget,
   ],
-  executes: async ({ get }) => {
+  executes: async ({
+    get
+  }) => {
     fs.copyFileSync(`${DME_NAME}.dme`, `${DME_NAME}.test.dme`);
     await DreamMaker(`${DME_NAME}.test.dme`, {
       defines: ['CBT', 'CIBUILDING', ...get(DefineParameter)],
@@ -259,9 +286,11 @@ export const DmTestTarget = new Juke.Target({
       ignoreWarningCodes: get(NoWarningParameter),
       namedDmVersion: get(DmVersionParameter),
     });
-    Juke.rm('data/logs/ci', { recursive: true });
+    Juke.rm('data/logs/ci', {
+      recursive: true
+    });
     const options = {
-      dmbFile : `${DME_NAME}.test.dmb`,
+      dmbFile: `${DME_NAME}.test.dmb`,
       namedDmVersion: get(DmVersionParameter),
     }
     await DreamDaemon(
@@ -273,8 +302,7 @@ export const DmTestTarget = new Juke.Target({
     try {
       const cleanRun = fs.readFileSync('data/logs/ci/clean_run.lk', 'utf-8');
       console.log(cleanRun);
-    }
-    catch (err) {
+    } catch (err) {
       Juke.logger.error('Test run was not clean, exiting');
       throw new Juke.ExitCode(1);
     }
@@ -283,14 +311,18 @@ export const DmTestTarget = new Juke.Target({
 
 export const AutowikiTarget = new Juke.Target({
   parameters: [DefineParameter, DmVersionParameter, WarningParameter, NoWarningParameter],
-  dependsOn: ({ get }) => [
+  dependsOn: ({
+    get
+  }) => [
     get(DefineParameter).includes('ALL_MAPS') && DmMapsIncludeTarget,
     IconCutterTarget,
   ],
   outputs: [
     'data/autowiki_edits.txt',
   ],
-  executes: async ({ get }) => {
+  executes: async ({
+    get
+  }) => {
     fs.copyFileSync(`${DME_NAME}.dme`, `${DME_NAME}.test.dme`);
     await DreamMaker(`${DME_NAME}.test.dme`, {
       defines: ['CBT', 'AUTOWIKI', ...get(DefineParameter)],
@@ -299,8 +331,12 @@ export const AutowikiTarget = new Juke.Target({
       namedDmVersion: get(DmVersionParameter),
     });
     Juke.rm('data/autowiki_edits.txt');
-    Juke.rm('data/autowiki_files', { recursive: true });
-    Juke.rm('data/logs/ci', { recursive: true });
+    Juke.rm('data/autowiki_files', {
+      recursive: true
+    });
+    Juke.rm('data/logs/ci', {
+      recursive: true
+    });
 
     const options = {
       dmbFile: `${DME_NAME}.test.dmb`,
@@ -329,7 +365,9 @@ export const YarnTarget = new Juke.Target({
   outputs: [
     'tgui/.yarn/install-target',
   ],
-  executes: ({ get }) => yarn('install', get(CiParameter) && '--immutable'),
+  executes: ({
+    get
+  }) => yarn('install', get(CiParameter) && '--immutable'),
 });
 
 export const TgFontTarget = new Juke.Target({
@@ -374,7 +412,9 @@ export const TguiTarget = new Juke.Target({
 export const TguiEslintTarget = new Juke.Target({
   parameters: [CiParameter],
   dependsOn: [YarnTarget],
-  executes: ({ get }) => yarn('tgui:lint', !get(CiParameter) && '--fix'),
+  executes: ({
+    get
+  }) => yarn('tgui:lint', !get(CiParameter) && '--fix'),
 });
 
 export const TguiPrettierTarget = new Juke.Target({
@@ -395,7 +435,9 @@ export const TguiTscTarget = new Juke.Target({
 export const TguiTestTarget = new Juke.Target({
   parameters: [CiParameter],
   dependsOn: [YarnTarget],
-  executes: ({ get }) => yarn(`tgui:test-${get(CiParameter) ? 'ci' : 'simple'}`),
+  executes: ({
+    get
+  }) => yarn(`tgui:test-${get(CiParameter) ? 'ci' : 'simple'}`),
 });
 
 export const TguiLintTarget = new Juke.Target({
@@ -404,7 +446,9 @@ export const TguiLintTarget = new Juke.Target({
 
 export const TguiDevTarget = new Juke.Target({
   dependsOn: [YarnTarget],
-  executes: ({ args }) => yarn('tgui:dev', ...args),
+  executes: ({
+    args
+  }) => yarn('tgui:dev', ...args),
 });
 
 export const TguiAnalyzeTarget = new Juke.Target({
@@ -432,7 +476,9 @@ export const BuildTarget = new Juke.Target({
 export const ServerTarget = new Juke.Target({
   parameters: [DmVersionParameter, PortParameter],
   dependsOn: [BuildTarget],
-  executes: async ({ get }) => {
+  executes: async ({
+    get
+  }) => {
     const port = get(PortParameter) || '1337';
     const options = {
       dmbFile: `${DME_NAME}.dmb`,
@@ -448,11 +494,17 @@ export const AllTarget = new Juke.Target({
 
 export const TguiCleanTarget = new Juke.Target({
   executes: async () => {
-    Juke.rm('tgui/public/.tmp', { recursive: true });
+    Juke.rm('tgui/public/.tmp', {
+      recursive: true
+    });
     Juke.rm('tgui/public/*.map');
     Juke.rm('tgui/public/*.{chunk,bundle,hot-update}.*');
-    Juke.rm('tgui/packages/tgfont/dist', { recursive: true });
-    Juke.rm('tgui/.yarn/{cache,unplugged,webpack}', { recursive: true });
+    Juke.rm('tgui/packages/tgfont/dist', {
+      recursive: true
+    });
+    Juke.rm('tgui/.yarn/{cache,unplugged,webpack}', {
+      recursive: true
+    });
     Juke.rm('tgui/.yarn/build-state.yml');
     Juke.rm('tgui/.yarn/install-state.gz');
     Juke.rm('tgui/.yarn/install-target');
@@ -475,7 +527,9 @@ export const CleanAllTarget = new Juke.Target({
   dependsOn: [CleanTarget],
   executes: async () => {
     Juke.logger.info('Cleaning up data/logs');
-    Juke.rm('data/logs', { recursive: true });
+    Juke.rm('data/logs', {
+      recursive: true
+    });
     Juke.logger.info('Cleaning up global yarn cache');
     await yarn('cache', 'clean', '--all');
   },

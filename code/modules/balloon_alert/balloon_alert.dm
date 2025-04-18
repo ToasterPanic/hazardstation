@@ -84,6 +84,57 @@
 	addtimer(CALLBACK(balloon_alert.loc, PROC_REF(forget_balloon_alert), balloon_alert), BALLOON_TEXT_TOTAL_LIFETIME(length_mult))
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(remove_image_from_client), balloon_alert, viewer_client), BALLOON_TEXT_TOTAL_LIFETIME(length_mult))
 
+// BEGIN HZC EDIT...
+/atom/proc/balloon_alert_credit_perform(mob/viewer, text)
+
+	var/client/viewer_client = viewer?.client
+	if (isnull(viewer_client))
+		return
+
+	var/image/balloon_alert = image(loc = isturf(src) ? src : get_atom_on_turf(src), layer = ABOVE_MOB_LAYER)
+	SET_PLANE_EXPLICIT(balloon_alert, BALLOON_CHAT_PLANE, src)
+	balloon_alert.alpha = 0
+	balloon_alert.appearance_flags = RESET_ALPHA|RESET_COLOR|RESET_TRANSFORM
+	balloon_alert.maptext = MAPTEXT("<span style='text-align: center; -dm-text-outline: 1px #0005'>[text]</span>")
+	balloon_alert.maptext_x = (BALLOON_TEXT_WIDTH - ICON_SIZE_X) * -0.5 - base_pixel_x
+	balloon_alert.pixel_x = -128
+	balloon_alert.pixel_y = ICON_SIZE_Y * -1.2
+	WXH_TO_HEIGHT(viewer_client?.MeasureText(text, null, BALLOON_TEXT_WIDTH), balloon_alert.maptext_height)
+	balloon_alert.maptext_width = BALLOON_TEXT_WIDTH
+
+	viewer_client?.images += balloon_alert
+
+	var/time_length = 10 SECONDS
+
+	animate(
+		balloon_alert,
+		pixel_y = ICON_SIZE_Y * 1.2,
+		time = time_length,
+		easing = LINEAR_EASING | EASE_OUT,
+	)
+
+	animate(
+		alpha = 255,
+		time = BALLOON_TEXT_SPAWN_TIME,
+		easing = CUBIC_EASING | EASE_OUT,
+		flags = ANIMATION_PARALLEL,
+	)
+
+	animate(
+		alpha = 0,
+		time = time_length,
+		easing = CUBIC_EASING | EASE_IN,
+	)
+
+	LAZYADD(update_on_z, balloon_alert)
+	// These two timers are not the same
+	// One manages the relation to the atom that spawned us, the other to the client we're displaying to
+	// We could lose our loc, and still need to talk to our client, so they are done seperately
+	addtimer(CALLBACK(balloon_alert.loc, PROC_REF(forget_balloon_alert), balloon_alert), time_length)
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(remove_image_from_client), balloon_alert, viewer_client), time_length)
+// END HZC EDIT!
+
+
 /atom/proc/forget_balloon_alert(image/balloon_alert)
 	LAZYREMOVE(update_on_z, balloon_alert)
 

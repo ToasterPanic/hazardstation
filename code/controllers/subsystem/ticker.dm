@@ -1,4 +1,5 @@
 #define ROUND_START_MUSIC_LIST "strings/round_start_sounds.txt"
+#define SHUTTLE_MUSIC_LIST "strings/shuttle_sounds.txt"
 #define SS_TICKER_TRAIT "SS_Ticker"
 
 SUBSYSTEM_DEF(ticker)

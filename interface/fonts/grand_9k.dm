@@ -3,7 +3,7 @@
 
 /// Base font
 /datum/font/grand9k
-	name = "Grand9K Pixel"
+	name = "Geopixel"
 	font_family = 'interface/fonts/Grand9K_Pixel.ttf'
 
 /// For icon overlays

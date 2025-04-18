@@ -66,6 +66,10 @@
 /obj/structure/plaque/static_plaque/golden/commission/wawa
 	desc = "Spinward Sector Station SS-13\n'Wawa' Class Outpost\nCommissioned 04/06/2564\n'Forever Vertical'"
 
+// Gammastation
+/obj/structure/plaque/static_plaque/golden/commission/gamma
+	desc = "Spinward Sector Station SS-13\n'Gamma' Class Outpost\nCommissioned 09/04/2565\n'Shit... Uh... I didn't think we'd get this far.'"
+
 //Removed stations
 
 // Asteroidstation: added Oct 17, 2015 (169ab09f7b52254ee505e54cdea681fab287647b), removed Jun 19, 2016 (#18661)- 8 months, 2 days

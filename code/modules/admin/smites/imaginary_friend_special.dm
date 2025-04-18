@@ -2,7 +2,7 @@
 #define CHOICE_PREFS_APPEARANCE "Look-a-like"
 #define CHOICE_PICK_PLAYER "Pick player"
 #define CHOICE_POLL_GHOSTS "Offer to ghosts"
-#define CHOICE_END_THEM "Do it!"
+#define CHOICE_END_THEM "KILL!"
 #define CHOICE_CANCEL "Cancel"
 
 /**

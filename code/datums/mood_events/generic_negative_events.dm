@@ -63,6 +63,11 @@
 	mood_change = -12
 	timeout = 2 MINUTES
 
+/datum/mood_event/bugs_under_skin // when there is bugs under your skin. take off your skin.
+	description = "THERE ARE BUGS UNDER MY SKIN!"
+	mood_change = -15
+	timeout = 15 SECONDS
+
 /datum/mood_event/shameful_suicide //suicide_acts that return SHAME, like sord
 	description = "I can't even end it all!"
 	mood_change = -15

@@ -1717,6 +1717,14 @@ GLOBAL_LIST_EMPTY(vending_machines_to_restock)
 	var/list/base64_cache = list()
 	panel_type = "panel20"
 
+/obj/machinery/vending/custom/nebula
+	name = "Nebulavendor"
+	icon_state = "nebulamart"
+	icon_deny = "nebulamart-deny"
+	max_integrity = 400
+	max_loaded_items = 25
+	panel_type = "panel20"
+
 /obj/machinery/vending/custom/compartmentLoadAccessCheck(mob/user)
 	. = FALSE
 	if(!isliving(user))

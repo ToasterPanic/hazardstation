@@ -1,7 +1,9 @@
 ///CARPTIDE! CARPTIDE! CARPTIDE! A swarm of carp will pass by and through the shuttle, including consequences of carp going through the shuttle
 /datum/shuttle_event/simple_spawner/carp
 	name = "Carp Nest! (Very Dangerous!)"
-	event_probability = 0.4
+	// BEGIN HZC EDIT...
+	event_probability = 1.5
+	// END HZC EDIT!
 	activation_fraction = 0.2
 
 	spawning_list = list(/mob/living/basic/carp = 12, /mob/living/basic/carp/mega = 3)
@@ -19,7 +21,9 @@
 ///Spawn a bunch of friendly carp to view from inside the shuttle! May occassionally pass through and nibble some windows, but are otherwise pretty harmless
 /datum/shuttle_event/simple_spawner/carp/friendly
 	name = "Passive Carp Nest! (Mostly Harmless!)"
-	event_probability = 3
+	// BEGIN HZC EDIT...
+	event_probability = 5
+	// END HZC EDIT!
 	activation_fraction = 0.1
 
 	spawning_list = list(/mob/living/basic/carp/passive = 1)

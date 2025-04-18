@@ -32,6 +32,11 @@
 	/// Minimum value for cut_multiplier in sales tagger mode.
 	var/cut_min = 0.01
 
+/obj/item/universal_scanner/suicide_act(mob/living/user)
+	user.visible_message(span_suicide("[user] begins scanning [user.p_themselves()] with the export scanner at full power! It looks like [user.p_theyre()] trying to commit suicide!"))
+	user.dust(drop_items = TRUE, force = TRUE)
+	return MANUAL_SUICIDE
+
 /obj/item/universal_scanner/Initialize(mapload)
 	. = ..()
 	scale_mode = sort_list(list(

@@ -5,6 +5,7 @@
 #define CREDITS_PATH "[global.config.directory]/contributors.dmi"
 
 /client/proc/RollCredits()
+	/* BEGIN HZC EDIT...
 	set waitfor = FALSE
 	if(!fexists(CREDITS_PATH))
 		return
@@ -23,6 +24,7 @@
 	sleep(CREDIT_ROLL_SPEED - CREDIT_SPAWN_SPEED)
 	remove_verb(src, /client/proc/ClearCredits)
 	qdel(credits_icon)
+	END HZC EDIT! */
 
 /client/proc/ClearCredits()
 	set name = "Hide Credits"
@@ -34,10 +36,11 @@
 /atom/movable/screen/credit
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	alpha = 0
-	screen_loc = "12,1"
 	plane = SPLASHSCREEN_PLANE
-	var/client/parent
+	screen_loc = "CENTER-6:16,BOTTOM"
+
 	var/matrix/target
+	var/client/parent
 
 /atom/movable/screen/credit/Initialize(mapload, datum/hud/hud_owner, credited, client/P, icon/I)
 	. = ..()
